@@ -39,7 +39,7 @@ public static class Extensions
     /// </summary>
     internal static bool IsRemote(this ConnectionInfo connection)
     {
-        var localAddresses = new List<string?> { "127.0.0.1", "::1" };
+        var localAddresses = new List<string?> { "127.0.0.1", "::1", "::ffff:192.168.65.1" };
         if (connection.LocalIpAddress != null)
         {
             localAddresses.Add(connection.LocalIpAddress.ToString());

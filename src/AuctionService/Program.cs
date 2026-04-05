@@ -28,6 +28,12 @@ builder.Services.AddMassTransit(x =>
 
     x.UsingRabbitMq((context, configurator) =>
     {
+        configurator.Host(builder.Configuration["RabbitMq:Host"], "/", h =>
+        {
+            h.Username(builder.Configuration.GetValue("RabbitMQ:Username", "guest")!);
+            h.Password(builder.Configuration.GetValue("RabbitMQ:Password", "guest")!);
+        });
+
         configurator.ConfigureEndpoints(context);
     });
 });
