@@ -66,10 +66,7 @@ internal static class HostingExtensions
                 options.Events.RaiseFailureEvents = true;
                 options.Events.RaiseSuccessEvents = true;
 
-                if (builder.Environment.IsEnvironment("Docker"))
-                {
-                    options.IssuerUri = "http://localhost:5001";
-                }
+                options.IssuerUri = builder.Configuration["IssuerUri"];
 
                 // Use a large chunk size for diagnostic data in development where it will be redirected to a local file.
                 if (builder.Environment.IsDevelopment())
@@ -79,7 +76,7 @@ internal static class HostingExtensions
             })
             .AddInMemoryIdentityResources(Config.IdentityResources)
             .AddInMemoryApiScopes(Config.ApiScopes)
-            .AddInMemoryClients(Config.Clients)
+            .AddInMemoryClients(Config.Clients(builder.Configuration))
             .AddAspNetIdentity<ApplicationUser>()
             .AddLicenseSummary()
             .AddProfileService<CustomProfileService>();

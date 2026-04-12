@@ -68,6 +68,8 @@ services:
     environment:
       - ASPNETCORE_ENVIRONMENT=Docker
       - ASPNETCORE_URLS=http://+:80
+      - IssuerUri=http://localhost:5001
+      - ClientApp=http://localhost:3000
       - ConnectionStrings__DefaultConnection=Server=postgres; User Id=postgres; Password=postgrespw; Database=identity
     ports:
       - 5001:80
@@ -81,6 +83,7 @@ services:
     environment:
       - ASPNETCORE_ENVIRONMENT=Docker
       - ASPNETCORE_URLS=http://+:80
+      - ClientApp=http://localhost:3000
     ports:
       - 6001:80
   bid-svc:
@@ -113,6 +116,23 @@ services:
       - 7004:80
     depends_on:
       - RabbitMQ
+  web-app:
+    image: motorbid/web-app
+    build:
+      context: .
+      dockerfile: frontend/web-app/Dockerfile
+    volumes:
+      - /var/lib/web/data
+    environment:
+      - AUTH_SECRET=7vgUxWjehgeKTOFH2dZu0zSeKP61o9gl0b1vuHCqeMo=
+      - AUTH_URL=http://localhost:3000
+      - AUTH_URL_INTERNAL=http://web-app:3000
+      - API_URL=http://gateway-svc/
+      - ID_URL=http://localhost:5001
+      - ID_URL_INTERNAL=http://identity-svc
+      - NOTIFY_URL=http://localhost:6001/notifications
+    ports:
+      - 3000:3000
 
 volumes:
   pgdata:

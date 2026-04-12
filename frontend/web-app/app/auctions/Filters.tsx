@@ -49,7 +49,7 @@ export default function Filters() {
     const filterBy = useParamsStore(state => state.filterBy);
 
     return (
-        <div className='flex justify-between items-center mb-4'>
+        <div className='flex flex-col md:flex-row justify-between items-start md:items-center mb-4 gap-3'>
              <div>
                 <span className='uppercase text-sm text-gray-500 mr-2'>Filter by</span>
                 <ButtonGroup>

@@ -41,7 +41,7 @@ export default function Listings() {
             setData(data);
             setLoading(false);
         })
-    }, [url])
+    }, [url, setData])
 
     if (loading) return <h3>Loading...</h3>
 
@@ -52,7 +52,7 @@ export default function Listings() {
                 <EmptyFilter showReset />
             ) : (
                 <>
-                    <div className='grid grid-cols-4 gap-6'>
+                    <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6'>
                         {data.auctions.map(auction => (
                             <AuctionCard key={auction.id} auction={auction} />
                         ))}

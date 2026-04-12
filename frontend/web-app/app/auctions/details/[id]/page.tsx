@@ -15,8 +15,8 @@ export default async function Details({ params }: { params: { id: string } }) {
 
     return (
         <div>
-            <div className='flex justify-between'>
-                <div className='flex items-center gap-3'>
+            <div className='flex flex-col md:flex-row justify-between gap-3'>
+                <div className='flex flex-wrap items-center gap-3'>
                     <Heading title={`${data.make} ${data.model}`} />
                     {user?.username === data.seller && (
                         <>
@@ -33,7 +33,7 @@ export default async function Details({ params }: { params: { id: string } }) {
                 </div>
             </div>
 
-            <div className='grid grid-cols-2 gap-6 mt-3'>
+            <div className='grid grid-cols-1 md:grid-cols-2 gap-6 mt-3'>
                 <div className='w-full bg-gray-200 relative aspect-[4/3] rounded-lg overflow-hidden'>
                     <CarImage imageUrl={data.imageUrl} />
                 </div>

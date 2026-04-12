@@ -27,7 +27,7 @@ export default function AuctionForm({ auction }: Props) {
             reset({ make, model, color, mileage, year })
         }
         setFocus('make');
-    }, [setFocus])
+    }, [setFocus, auction, reset])
 
     async function onSubmit(data: FieldValues) {
         try {
@@ -57,14 +57,14 @@ export default function AuctionForm({ auction }: Props) {
             <Input label='Make' name='make' control={control} rules={{ required: 'Make is required' }} />
             <Input label='Model' name='model' control={control} rules={{ required: 'Model is required' }} />
             <Input label='Color' name='color' control={control} rules={{ required: 'Color is required' }} />
-            <div className="grid grid-cols-2 gap-3">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                 <Input label='Year' name='year' type='number' control={control} rules={{ required: 'Year is required' }} />
                 <Input label='Mileage' name='mileage' control={control} rules={{ required: 'Mileage is required' }} />
             </div>
             {pathname === '/auctions/create' &&
             <>
                 <Input label='Image URL' name='imageUrl' control={control} rules={{ required: 'Image url is required' }} />
-                <div className="grid grid-cols-2 gap-3">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                     <Input label='Reserve price (leave blank for no reserve)' name='reservePrice' type='number' control={control} />
                     <DateInput
                         label='Auction end date/time'
