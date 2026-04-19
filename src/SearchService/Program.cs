@@ -67,3 +67,5 @@ static IAsyncPolicy<HttpResponseMessage> GetPolicy()
     => HttpPolicyExtensions
         .HandleTransientHttpError()
         .WaitAndRetryForeverAsync(_ => TimeSpan.FromSeconds(3));
+
+public partial class Program {}
