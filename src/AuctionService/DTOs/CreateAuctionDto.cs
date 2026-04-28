@@ -20,8 +20,7 @@ namespace AuctionService.DTOs
         public int Mileage { get; set; }
         [Required]
         public string ImageUrl { get; set; }
-        [Required]
-        public int ReservePrice { get; set; }
+        public int? ReservePrice { get; set; }
         [Required]
         public DateTime AuctionEnd { get; set; }
     }
