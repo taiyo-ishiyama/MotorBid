@@ -3,11 +3,7 @@
 A microservices-based car auction platform where users can list vehicles, place real-time bids, and receive instant notifications. Built with .NET 10, Next.js 14, and event-driven architecture.
 
 ## Demo
-
-<!-- To embed: open this file on github.com in edit mode and drag-and-drop your .mp4 onto the line below.
-     GitHub will replace this comment with a uploaded video link that renders as a player. -->
-
-_Demo video coming soon — drop the .mp4 here on GitHub._
+https://github.com/user-attachments/assets/56ee93e3-2b86-4af1-bd68-46b3c8c09c0b
 
 ## Tech Stack
 
